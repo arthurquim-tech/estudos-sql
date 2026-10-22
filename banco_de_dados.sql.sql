@@ -2,15 +2,18 @@ CREATE DATABASE escola_sql;
 
 USE escola_sql;
 
+
 CREATE TABLE aluno (
-rgm INT NOT NULL auto_increment,
-nome VARCHAR(100) NOT NULL,
-cpf CHAR(11) NOT NULL,
-email VARCHAR(120),
-CONSTRAINT pk_aluno PRIMARY KEY (rgm),
-CONSTRAINT uq_aluno_cpf PRIMARY KEY (cpf),
-CONSTRAINT uq_aluno_email UNIQUE (email) 
+    rgm INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf CHAR(11) NOT NULL,
+    email VARCHAR(120),
+
+    CONSTRAINT pk_aluno PRIMARY KEY (rgm),
+    CONSTRAINT uq_aluno_cpf UNIQUE (cpf),
+    CONSTRAINT uq_aluno_email UNIQUE (email)
 );
+
 
 CREATE TABLE disciplina (
 id_disciplina INT NOT NULL,
