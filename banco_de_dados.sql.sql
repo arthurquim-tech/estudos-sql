@@ -1,7 +1,5 @@
 CREATE DATABASE escola_sql;
 
-CREATE TABLE escola_sql;
-
 USE escola_sql;
 
 CREATE TABLE aluno (
