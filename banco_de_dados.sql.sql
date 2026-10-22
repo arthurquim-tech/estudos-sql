@@ -22,17 +22,28 @@ carga_horaria INT NOT NULL,
 CONSTRAINT pk_disciplina PRIMARY KEY (id_disciplina),
 CONSTRAINT ck_carga_horaria CHECK (carga_horaria > 0)
 );
+
 CREATE TABLE matricula (
-rgm INT NOT NULL auto_increment,
-id_disciplina INT NOT NULL,
-data_matricula DATE NOT NULL, 
-periodo CHAR(06) NOT NULL,
-situacao VARCHAR(20) NOT NULL DEFAULT 'ATIVA',
-CONSTRAINT pk_matricula PRIMARY KEY (rgm, id_disciplina, periodo),
-CONSTRAINT fk_matricula_aluno FOREIGN KEY (rgm)REFERENCES aluno(rgm),
-CONSTRAINT fk_matricula_disciplina FOREIGN KEY(id_disciplina)REFERENCES disciplina(id_disciplina),
-CONSTRAINT ck_situacao CHECK (situacao IN ('ATIVA', 'TRANCADA', 'CONCLUIDA'))
-); 
+    rgm INT NOT NULL,
+    id_disciplina INT NOT NULL,
+    data_matricula DATE NOT NULL,
+    periodo CHAR(6) NOT NULL,
+    situacao VARCHAR(20) NOT NULL DEFAULT 'ATIVA',
+
+    CONSTRAINT pk_matricula
+        PRIMARY KEY (rgm, id_disciplina, periodo),
+
+    CONSTRAINT fk_matricula_aluno
+        FOREIGN KEY (rgm) REFERENCES aluno(rgm),
+
+    CONSTRAINT fk_matricula_disciplina
+        FOREIGN KEY (id_disciplina)
+        REFERENCES disciplina(id_disciplina),
+
+    CONSTRAINT ck_situacao
+        CHECK (situacao IN ('ATIVA', 'TRANCADA', 'CONCLUIDA'))
+);
+
 INSERT INTO aluno (rgm, nome, cpf, email) VALUES
 (1001, 'Ana Souza', '12345678901', 'ana@exemplo.com'), 
 (1002, 'Bruno Lima', '23456789012', 'bruno@exemplo.com'), 
